@@ -4,7 +4,9 @@ import Config from 'react-native-config';
 import {ScrollView} from 'react-native-gesture-handler';
 import styles from './styles';
 import Axios from 'axios';
-
+import {useDispatch} from 'react-redux';
+import {useSelector} from '../../redux/root-reducer';
+import {fetchStatisticData} from '../../redux/statistic/statistic.actions';
 interface Statistic {
   ID: string;
   Country: string;
@@ -17,13 +19,15 @@ interface Statistic {
 }
 
 const TableScreen = () => {
+  const dispatch = useDispatch();
+  const statistisData = useSelector(state => state.statistic.statistics);
   const defaultData: Statistic[] = [];
   const [data, setData] = useState(defaultData);
   useEffect(() => {
-    console.log('OK');
-    getCoconaVirusData();
-    console.log('Data is ',data);
-    
+    // console.log('OK');
+    // getCoconaVirusData();
+    // console.log('Data is ',data);
+    dispatch(fetchStatisticData());
   }, [data]);
 
   const getCoconaVirusData = async () => {
@@ -49,12 +53,6 @@ const TableScreen = () => {
         <View style={[styles.itemStyle, {width: 80}]}>
           <Text>New Deaths</Text>
         </View>
-        <View style={[styles.itemStyle, {width: 80}]}>
-          <Text>Recovers</Text>
-        </View>
-        <View style={[styles.itemStyle, {width: 80}]}>
-          <Text>New Recovers</Text>
-        </View>
       </View>
     );
   };
@@ -69,21 +67,28 @@ const TableScreen = () => {
           <Text>{item.TotalConfirmed}</Text>
         </View>
         <View
-          style={[styles.itemStyle, {width: 80, backgroundColor: item.NewConfirmed!=0 ? '#feecb1':'transparent'}]}>
-          <Text>{item.NewConfirmed == 0 ? null : '+'+item.NewConfirmed}</Text>
+          style={[
+            styles.itemStyle,
+            {
+              width: 80,
+              backgroundColor:
+                item.NewConfirmed != 0 ? '#feecb1' : 'transparent',
+            },
+          ]}>
+          <Text>{item.NewConfirmed == 0 ? null : '+' + item.NewConfirmed}</Text>
         </View>
         <View style={[styles.itemStyle, {width: 80}]}>
-          <Text>{item.TotalDeaths}</Text>
-        </View>
-        <View style={[styles.itemStyle, {width: 80, backgroundColor: item.NewDeaths!=0 ? 'red':'transparent'}]}>
-          <Text>{item.NewDeaths == 0 ? null : '+'+item.NewDeaths}</Text>
-        </View>
-        <View style={[styles.itemStyle, {width: 80}]}>
-          <Text>{item.TotalRecovered}</Text>
+          <Text>{item.TotalDeaths == 0 ? null : '+' + item.TotalDeaths}</Text>
         </View>
         <View
-          style={[styles.itemStyle, {width: 80, backgroundColor: item.NewRecovered!=0 ? '#99edc3':'transparent'}]}>
-          <Text>{item.NewRecovered == 0 ? null : '+'+item.NewRecovered}</Text>
+          style={[
+            styles.itemStyle,
+            {
+              width: 80,
+              backgroundColor: item.NewDeaths != 0 ? 'red' : 'transparent',
+            },
+          ]}>
+          <Text>{item.NewDeaths == 0 ? null : '+' + item.NewDeaths}</Text>
         </View>
       </View>
     );
@@ -97,7 +102,7 @@ const TableScreen = () => {
         contentContainerStyle={{flexDirection: 'column'}}>
         {render_country_header()}
         <FlatList
-          data={data}
+          data={statistisData}
           renderItem={({item}) => render_country_item(item)}
           keyExtractor={item => item.ID}
         />
