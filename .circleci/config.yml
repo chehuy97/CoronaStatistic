@@ -24,7 +24,8 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-            - run:
+      
+      - run:
           name: Move to android folder
           command: |
             cd android
