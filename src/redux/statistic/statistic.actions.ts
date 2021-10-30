@@ -1,7 +1,7 @@
 import { statisitcTypes, AcctionSuccess, AcctionFailure, statisticPayload, Statistic} from './statistic.types'
 
 export const fetchStatisticData = () => {
-    console.log('ACTION FETCH STATISTIC DATA');
+    // console.log('ACTION FETCH STATISTIC DATA');
     
     return {
         type: statisitcTypes.FETCH_STATISTIC_DATA

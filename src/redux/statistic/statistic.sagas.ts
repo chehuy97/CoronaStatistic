@@ -5,11 +5,11 @@ import {fetchStatisticAPI} from '../../utils/network';
 import {AxiosResponse} from 'axios';
 
 export function* fetchStatistics() {
-  console.log('SAGA STATISTIC');
+  // console.log('SAGA STATISTIC');
   try {
     const result: AxiosResponse<any> = yield call(fetchStatisticAPI);
     let statisticData: Statistic[] = result.data.Countries;
-    console.log('STATISTIC DATA IS ', statisticData);
+    // console.log('STATISTIC DATA IS ', statisticData);
     
     yield put(fetchStatisticSuccess(statisticData));
   } catch (err) {
