@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: npx envinfo
-      - run: yarn install
+      - run: npm install
       - run: cd android && chmod +x gradlew && ./gradlew assembleRelease
 
 workflows:
