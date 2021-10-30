@@ -27,8 +27,7 @@ jobs:
       
       - run:
           name: Move to android folder
-          command: |
-            cd android
+          command: cd android
       # The next step will run the unit tests
       - android/run-tests:
           test-command: ./gradlew lint testDebug --continue
