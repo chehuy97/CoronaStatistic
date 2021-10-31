@@ -4,7 +4,8 @@ import { View, Text } from 'react-native'
 const ChartScreen = () => {
     return (
         <View>
-            <Text>ChartScreen</Text>
+            <Text>Chart Screen</Text>
+            <Text>Apply Later</Text>
         </View>
     )
 }
