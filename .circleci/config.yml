@@ -9,6 +9,8 @@ jobs:
       - run: npx envinfo
       - run: npm install
       - run: cd android && ./gradlew assembleRelease
+      - store_artifacts:
+         path: app/build/outputs/apk/release
 
 workflows:
   version: 2.1
