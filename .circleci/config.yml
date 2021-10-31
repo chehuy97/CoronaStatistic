@@ -2,6 +2,9 @@ version: 2
 jobs:
   android:
     working_directory: ~/repo
+    branches:
+      only:
+        - develop
     docker:
       - image: reactnativecommunity/react-native-android
     steps:
