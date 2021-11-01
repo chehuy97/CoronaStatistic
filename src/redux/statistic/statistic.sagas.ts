@@ -12,7 +12,7 @@ export function* fetchStatistics() {
     // console.log('STATISTIC DATA IS ', statisticData);
     
     yield put(fetchStatisticSuccess(statisticData));
-  } catch (err) {
+  } catch (err:any) {
     yield put(fetchStatisticError(err.msg));
   }
 }
