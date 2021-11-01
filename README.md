@@ -1,2 +1,2 @@
 # CoronaStatistic
-[![CircleCI](https://circleci.com/gh/chehuy97/CoronaStatistic.svg?style=shield)](https://app.circleci.com/pipelines/github/chehuy97/CoronaStatistic)
+[![CircleCI](https://circleci.com/gh/chehuy97/CoronaStatistic/tree/master.svg?style=shield)](https://circleci.com/gh/chehuy97/CoronaStatistic/tree/master)
