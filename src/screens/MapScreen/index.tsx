@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 const MapScreen = () => {
     return (
         <View>
-            <Text>Map Screen 1</Text>
+            <Text>Map Screen 2</Text>
         </View>
     )
 }
